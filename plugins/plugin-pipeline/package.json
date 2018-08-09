@@ -1,0 +1,43 @@
+{
+  "name": "@titan-cli/plugin-pipeline",
+  "description": "CodePipeline plugin for Titan CLI",
+  "version": "0.0.0",
+  "author": "davidkelley @davidkelley",
+  "bugs": "https://github.com/davidkelley/titan-plugin-pipeline/issues",
+  "dependencies": {
+    "@oclif/plugin-help": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=8.10"
+  },
+  "files": [
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/davidkelley/titan-plugin-pipeline",
+  "keywords": [
+    "oclif-plugin"
+  ],
+  "license": "MIT",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "titan-pipeline",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "topics": {
+      "pipeline": {
+        "description": "Manage & View deployed CodePipeline resources"
+      }
+    }
+  },
+  "repository": "davidkelley/titan-plugin-pipeline",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@titan/cli",
+  "name": "@titan-cli/cli",
   "private": true,
   "license": "MIT",
   "repository": {

@@ -1,5 +1,5 @@
 {
-  "name": "@titan/cli",
+  "name": "@titan-cli/cli",
   "description": "CI/CD CLI Tool for AWS",
   "version": "0.0.0",
   "author": "davidkelley @davidkelley",
