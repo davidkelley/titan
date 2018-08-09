@@ -32,6 +32,7 @@ jobs:
       - run: npm test
 
       - persist_to_workspace:
+          root: ~/repo
           paths:
             - ./
 
