@@ -29,6 +29,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - node_modules/.bin
           key: deps-{{ checksum "package.json" }}
 
       - run:
@@ -37,7 +38,12 @@ jobs:
 
       - run:
           name: Test Packages
-          command: npm test
+          command: npm test -- --ci
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+
+      - store_test_results:
+          path: reports
 
       - persist_to_workspace:
           root: ~/repo

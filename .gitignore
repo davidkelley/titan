@@ -3,3 +3,4 @@ lerna-*
 coverage
 node_modules
 tmp
+junit.xml
