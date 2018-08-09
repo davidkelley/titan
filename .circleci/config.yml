@@ -58,6 +58,10 @@ jobs:
           at: ./
 
       - run:
+          name: Trust GitHub SSH Host
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - run:
           name: Publish Packages
           command: npm run lerna publish -- --yes --conventional-commits
 
