@@ -2,8 +2,6 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/repo
-  environment:
-    NODE_ENV: production
   docker:
     - image: circleci/node:8
 
@@ -17,19 +15,19 @@ jobs:
           name: Update NPM
           command: sudo npm install -g npm@latest
 
-      # - restore_cache:
-      #     keys:
-      #     - deps-{{ checksum "package.json" }}
+      - restore_cache:
+          keys:
+          - deps-{{ checksum "package.json" }}
 
       - run:
           name: Install Dependencies
           command: npm install
 
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #       - node_modules/.bin
-      #     key: deps-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - node_modules
+            - node_modules/.bin
+          key: deps-{{ checksum "package.json" }}
 
       - run:
           name: Bootstrap Lerna Dependencies

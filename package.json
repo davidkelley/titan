@@ -12,7 +12,7 @@
   "homepage": "https://github.com/davidkelley/titan#readme",
   "scripts": {
     "commit": "npx git-cz",
-    "lerna": "npx lerna",
+    "lerna": "lerna",
     "lint": "eslint . --ignore-path .gitignore --cache",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest --coverage"
@@ -33,6 +33,8 @@
   "devDependencies": {
     "@aerofer/eslint-config": "0.0.27",
     "@aerofer/prettier-style": "0.0.27",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
     "@oclif/dev-cli": "^1.15.4",
     "@oclif/plugin-help": "^2.0.5",
     "@oclif/test": "^1.1.0",
