@@ -12,7 +12,7 @@
   "homepage": "https://github.com/davidkelley/titan#readme",
   "scripts": {
     "commit": "npx git-cz",
-    "lerna": "lerna",
+    "lerna": "npx lerna",
     "lint": "eslint . --ignore-path .gitignore --cache",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest --coverage"
