@@ -6,7 +6,7 @@ defaults: &defaults
     - image: circleci/node:8
 
 jobs:
-  test:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -27,20 +27,3 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-
-workflows:
-  version: 2
-  publish:
-    jobs:
-      - test:
-          filters:
-            tags:
-              only: /^v.*/
-      - deploy:
-          requires:
-            - test
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
