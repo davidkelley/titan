@@ -16,6 +16,7 @@ jobs:
           - v1-dependencies-
 
       - run: npm ci
+      
       - run: npm run lerna bootstrap
 
       - run: npm test
