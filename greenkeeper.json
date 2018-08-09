@@ -1,0 +1,14 @@
+{
+  "groups": {
+    "core": {
+      "packages": [
+        "core/cli/package.json"
+      ]
+    },
+    "plugins": {
+      "packages": [
+        "plugins/plugin-pipeline/package.json"
+      ]
+    }
+  }
+}

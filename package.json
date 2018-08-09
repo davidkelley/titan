@@ -50,5 +50,24 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "greenkeeper": {
+    "commitMessages": {
+      "initialBadge": "docs: :memo: add greenkeeper badge",
+      "initialDependencies": "chore: :gem: update dependencies",
+      "initialBranches": "build: :tada: whitelist greenkeeper branches",
+      "dependencyUpdate": "upgrade: :gem: update ${dependency} to version ${version}",
+      "devDependencyUpdate": "upgrade: :gem: update ${dependency} to version ${version}",
+      "dependencyPin": "fix: :bug: pin ${dependency} to ${oldversion}",
+      "devDependencyPin": "fix: :bug: pin ${dependency} to ${oldversion}"
+    },
+    "prTitles": {
+      "initialPR": "chore: update dependencies to enable greenkeeper",
+      "initialPrBadge": "chore: add badge to enable greenkeeper",
+      "initialPrBadgeOnly": "chore: add greenkeeper badge",
+      "initialSubgroupPR": "chore: update dependencies for ${group}",
+      "basicPR": "chore: update ${dependency} to the latest",
+      "groupPR": "chore: update ${dependency} in group ${group} to the latest"
+    }
   }
 }
