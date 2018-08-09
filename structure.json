@@ -1,0 +1,878 @@
+{
+  "Source": {
+    "stageName": "Source",
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "GitHub": {
+        "actionName": "GitHub",
+        "currentRevision": {
+          "revisionId": "69b06ca869b056803336ec0c0d1fbed6e2855cdd",
+          "created": "2018-07-30T10:06:41.914Z"
+        },
+        "latestExecution": {
+          "status": "Succeeded",
+          "lastStatusChange": "2018-07-30T10:06:41.915Z"
+        },
+        "entityUrl": "https://github.com/davidkelley/aerofer-locations/tree/master",
+        "revisionUrl": "https://github.com/davidkelley/aerofer-locations/commit/69b06ca869b056803336ec0c0d1fbed6e2855cdd",
+        "actionTypeId": {
+          "category": "Source",
+          "owner": "ThirdParty",
+          "provider": "GitHub",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "Branch": "master",
+          "OAuthToken": "****",
+          "Owner": "davidkelley",
+          "PollForSourceChanges": "false",
+          "Repo": "aerofer-locations"
+        },
+        "outputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ],
+        "inputArtifacts": []
+      }
+    }
+  },
+  "Pipeline": {
+    "stageName": "Pipeline",
+    "inboundTransitionState": {
+      "enabled": true
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Update": {
+        "actionName": "Update",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177 was updated with no change.",
+          "lastStatusChange": "2018-07-30T10:07:18.706Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177/e0190810-4023-11e8-819f-50d5cd265c36",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177/e0190810-4023-11e8-819f-50d5cd265c36"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "CREATE_UPDATE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"Repository\": \"davidkelley/aerofer-locations\",\n  \"Branch\": \"master\",\n  \"Channel\": \"locations\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177",
+          "TemplatePath": "GitHubOutput::pipeline.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      }
+    }
+  },
+  "Build": {
+    "stageName": "Build",
+    "inboundTransitionState": {
+      "enabled": true,
+      "lastChangedBy": "arn:aws:sts::122946922490:assumed-role/OrganizationAccountAccessRole/david",
+      "lastChangedAt": "2018-07-07T22:34:04.130Z"
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Build": {
+        "actionName": "Build",
+        "latestExecution": {
+          "status": "Succeeded",
+          "lastStatusChange": "2018-07-30T10:09:58.827Z",
+          "externalExecutionId": "Build-iSBxeaINOCt8:4d863c9e-6396-4541-bfc3-2c006317a2d5",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/codebuild/home?#/builds/Build-iSBxeaINOCt8:4d863c9e-6396-4541-bfc3-2c006317a2d5/view/new"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/codebuild/home?#/projects/Build-iSBxeaINOCt8/view",
+        "actionTypeId": {
+          "category": "Build",
+          "owner": "AWS",
+          "provider": "CodeBuild",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ProjectName": "Build-iSBxeaINOCt8"
+        },
+        "outputArtifacts": [
+          {
+            "name": "BuildOutput"
+          }
+        ],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      }
+    }
+  },
+  "Test": {
+    "stageName": "Test",
+    "inboundTransitionState": {
+      "enabled": true
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Resources": {
+        "actionName": "Resources",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources was created.",
+          "lastStatusChange": "2018-07-30T10:11:46.805Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources/c55acde0-93e0-11e8-862d-500c219b8099",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources/c55acde0-93e0-11e8-862d-500c219b8099"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "OutputFileName": "Outputs.json",
+          "ParameterOverrides": "{\n  \"Role\": \"Master\",\n  \"Deployment\": \"Test\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources",
+          "TemplatePath": "GitHubOutput::resources.yml"
+        },
+        "outputArtifacts": [
+          {
+            "name": "TestResourcesOutput"
+          }
+        ],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      },
+      "Authentication": {
+        "actionName": "Authentication",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication was created.",
+          "lastStatusChange": "2018-07-30T10:11:13.585Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication/c5a59280-93e0-11e8-a648-500c524058f2",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication/c5a59280-93e0-11e8-a648-500c524058f2"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_NAMED_IAM",
+          "OutputFileName": "Outputs.json",
+          "ParameterOverrides": "{\n  \"DelegatedIAMRole\": \"StackSet-locations-e454f750-f97d-459e-b9-BuildRole-UQ6T52ZD8J6R\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication",
+          "TemplatePath": "GitHubOutput::authentication.yml"
+        },
+        "outputArtifacts": [
+          {
+            "name": "TestAuthenticationOutput"
+          }
+        ],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      },
+      "Create": {
+        "actionName": "Create",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Change set StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test was created.",
+          "lastStatusChange": "2018-07-30T10:12:51.365Z",
+          "externalExecutionId": "changeset/detail?changeSetId=arn:aws:cloudformation:us-east-1:122946922490:changeSet/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test/fdffc836-e090-4c4f-a018-caa51acc9f0e",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/changeset/detail?changeSetId=arn:aws:cloudformation:us-east-1:122946922490:changeSet/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test/fdffc836-e090-4c4f-a018-caa51acc9f0e"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "ActionMode": "CHANGE_SET_REPLACE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ChangeSetName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test",
+          "ParameterOverrides": "{\n  \"DefinitionKey\": { \"Fn::GetParam\" : [ \"BuildOutput\", \"build.json\", \"DEFINITION_KEY\" ] },\n  \"UserPoolArn\": { \"Fn::GetParam\": [\"TestAuthenticationOutput\", \"Outputs.json\", \"UserPoolArn\"] },\n  \"LocationsTable\": { \"Fn::GetParam\": [\"TestResourcesOutput\", \"Outputs.json\", \"LocationsTable\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test",
+          "TemplateConfiguration": "GitHubOutput::__config__/test/service.json",
+          "TemplatePath": "BuildOutput::template.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "BuildOutput"
+          },
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "TestAuthenticationOutput"
+          },
+          {
+            "name": "TestResourcesOutput"
+          }
+        ]
+      },
+      "Deploy": {
+        "actionName": "Deploy",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test was created.",
+          "lastStatusChange": "2018-07-30T10:14:26.959Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test/fef9c7e0-93e0-11e8-93d8-500c20fafe62",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test/fef9c7e0-93e0-11e8-93d8-500c20fafe62"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 3,
+        "configuration": {
+          "ActionMode": "CHANGE_SET_EXECUTE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ChangeSetName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test",
+          "OutputFileName": "Outputs.json",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test"
+        },
+        "outputArtifacts": [
+          {
+            "name": "TestDeployOutput"
+          }
+        ],
+        "inputArtifacts": []
+      },
+      "URL": {
+        "actionName": "URL",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url was created.",
+          "lastStatusChange": "2018-07-30T10:15:33.355Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url/5f2bc9b0-93e1-11e8-b616-50fae9826c35",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url/5f2bc9b0-93e1-11e8-b616-50fae9826c35"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 4,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"Key\": \"/Temp/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177/URL\",\n  \"Value\": { \"Fn::GetParam\": [\"TestDeployOutput\", \"Outputs.json\", \"URL\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url",
+          "TemplatePath": "GitHubOutput::parameter.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "TestDeployOutput"
+          },
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      },
+      "AuthData": {
+        "actionName": "AuthData",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication was created.",
+          "lastStatusChange": "2018-07-30T10:15:35.687Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication/5f44cff0-93e1-11e8-819e-50d5ca632682",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication/5f44cff0-93e1-11e8-819e-50d5ca632682"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 4,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"Key\": \"/Temp/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177/AUTH_DATA\",\n  \"Value\": { \"Fn::GetParam\": [\"TestAuthenticationOutput\", \"Outputs.json\", \"UserPoolJSONData\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication",
+          "TemplatePath": "GitHubOutput::parameter.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "TestAuthenticationOutput"
+          },
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      },
+      "Test": {
+        "actionName": "Test",
+        "latestExecution": {
+          "status": "Succeeded",
+          "lastStatusChange": "2018-07-30T10:18:14.213Z",
+          "externalExecutionId": "TestBuild-i9Zh8BOUbaoe:40b9afd7-8587-4c93-8d1b-8aea821668e6",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/codebuild/home?#/builds/TestBuild-i9Zh8BOUbaoe:40b9afd7-8587-4c93-8d1b-8aea821668e6/view/new"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/codebuild/home?#/projects/TestBuild-i9Zh8BOUbaoe/view",
+        "actionTypeId": {
+          "category": "Test",
+          "owner": "AWS",
+          "provider": "CodeBuild",
+          "version": "1"
+        },
+        "runOrder": 5,
+        "configuration": {
+          "ProjectName": "TestBuild-i9Zh8BOUbaoe"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      }
+    }
+  },
+  "Teardown": {
+    "stageName": "Teardown",
+    "inboundTransitionState": {
+      "enabled": true,
+      "lastChangedBy": "arn:aws:sts::122946922490:assumed-role/OrganizationAccountAccessRole/david",
+      "lastChangedAt": "2018-06-03T09:34:08.162Z"
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Service": {
+        "actionName": "Service",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test was deleted.",
+          "lastStatusChange": "2018-07-30T10:19:21.690Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      },
+      "URL": {
+        "actionName": "URL",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url was deleted.",
+          "lastStatusChange": "2018-07-30T10:20:26.918Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-url"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      },
+      "AuthData": {
+        "actionName": "AuthData",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication was deleted.",
+          "lastStatusChange": "2018-07-30T10:20:27.335Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-parameter-authentication"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      },
+      "Authentication": {
+        "actionName": "Authentication",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication was deleted.",
+          "lastStatusChange": "2018-07-30T10:21:32.749Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 3,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-authentication"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      },
+      "Resources": {
+        "actionName": "Resources",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources was deleted.",
+          "lastStatusChange": "2018-07-30T10:22:03.998Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 3,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-test-resources"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      }
+    }
+  },
+  "Release": {
+    "stageName": "Release",
+    "inboundTransitionState": {
+      "enabled": true
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Disable_AutoScaling": {
+        "actionName": "Disable_AutoScaling",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling was deleted.",
+          "lastStatusChange": "2018-07-30T10:23:11.475Z"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "DELETE_ONLY",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": []
+      },
+      "Resources": {
+        "actionName": "Resources",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources was updated with no change.",
+          "lastStatusChange": "2018-07-30T10:23:45.082Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources/85fff500-6f49-11e8-90e5-50fae984a035",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources/85fff500-6f49-11e8-90e5-50fae984a035"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "OutputFileName": "Outputs.json",
+          "ParameterOverrides": "{\n  \"Role\": \"Master\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources",
+          "TemplatePath": "GitHubOutput::resources.yml"
+        },
+        "outputArtifacts": [
+          {
+            "name": "ResourcesOutput"
+          }
+        ],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      },
+      "Enable_AutoScaling": {
+        "actionName": "Enable_AutoScaling",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling was created.",
+          "lastStatusChange": "2018-07-30T10:24:50.431Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling/a82c2f00-93e2-11e8-83b3-500c28604c82",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling/a82c2f00-93e2-11e8-83b3-500c28604c82"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 3,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"LocationsTable\": { \"Fn::GetParam\": [\"ResourcesOutput\", \"Outputs.json\", \"LocationsTable\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-resources-scaling",
+          "TemplatePath": "GitHubOutput::scaling.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "ResourcesOutput"
+          }
+        ]
+      },
+      "Create": {
+        "actionName": "Create",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Change set StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations was created.",
+          "lastStatusChange": "2018-07-30T10:24:50.791Z",
+          "externalExecutionId": "changeset/detail?changeSetId=arn:aws:cloudformation:us-east-1:122946922490:changeSet/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations/08796fed-5950-425e-b1c7-8d7570d346bc",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/changeset/detail?changeSetId=arn:aws:cloudformation:us-east-1:122946922490:changeSet/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations/08796fed-5950-425e-b1c7-8d7570d346bc"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 3,
+        "configuration": {
+          "ActionMode": "CHANGE_SET_REPLACE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ChangeSetName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations",
+          "ParameterOverrides": "{\n  \"EnabledOrigin\": \"'https://aerofer.co.uk'\",\n  \"DefinitionKey\": { \"Fn::GetParam\" : [ \"BuildOutput\", \"build.json\", \"DEFINITION_KEY\" ] },\n  \"LocationsTable\": { \"Fn::GetParam\": [\"ResourcesOutput\", \"Outputs.json\", \"LocationsTable\"] },\n  \"UserPoolArn\": \"arn:aws:cognito-idp:us-east-1:122946922490:userpool/us-east-1_6xzgIQ8Z9\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations",
+          "TemplateConfiguration": "GitHubOutput::__config__/release/service.json",
+          "TemplatePath": "BuildOutput::template.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "BuildOutput"
+          },
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "ResourcesOutput"
+          }
+        ]
+      },
+      "Deploy": {
+        "actionName": "Deploy",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations was updated.",
+          "lastStatusChange": "2018-07-30T10:25:55.433Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations/440ff9c0-4027-11e8-8174-500c524058c6",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations/440ff9c0-4027-11e8-8174-500c524058c6"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 4,
+        "configuration": {
+          "ActionMode": "CHANGE_SET_EXECUTE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ChangeSetName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations",
+          "OutputFileName": "Outputs.json",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations"
+        },
+        "outputArtifacts": [
+          {
+            "name": "DeployOutput"
+          }
+        ],
+        "inputArtifacts": []
+      },
+      "Domain": {
+        "actionName": "Domain",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations-domain was updated with no change.",
+          "lastStatusChange": "2018-07-30T10:26:29.567Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations-domain/a552a840-4027-11e8-a8e6-500c28b38499",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations-domain/a552a840-4027-11e8-a8e6-500c28b38499"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 5,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "OutputFileName": "Outputs.json",
+          "ParameterOverrides": "{\n  \"Api\": { \"Fn::GetParam\": [\"DeployOutput\", \"Outputs.json\", \"Api\"] },\n  \"Stage\": { \"Fn::GetParam\": [\"DeployOutput\", \"Outputs.json\", \"Stage\"] },\n  \"BasePath\": \"locations\"\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-locations-domain",
+          "TemplatePath": "GitHubOutput::domain.yml"
+        },
+        "outputArtifacts": [
+          {
+            "name": "DomainOutput"
+          }
+        ],
+        "inputArtifacts": [
+          {
+            "name": "DeployOutput"
+          },
+          {
+            "name": "GitHubOutput"
+          }
+        ]
+      }
+    }
+  },
+  "Post-Release": {
+    "stageName": "Post-Release",
+    "inboundTransitionState": {
+      "enabled": true,
+      "lastChangedBy": "arn:aws:sts::122946922490:assumed-role/OrganizationAccountAccessRole/david",
+      "lastChangedAt": "2018-06-13T21:08:52.907Z"
+    },
+    "latestExecution": {
+      "pipelineExecutionId": "1a8ca6a6-dcfa-4882-ad55-20b623c5dd25",
+      "status": "Succeeded"
+    },
+    "actions": {
+      "Replication": {
+        "actionName": "Replication",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-replication was updated with no change.",
+          "lastStatusChange": "2018-07-30T10:27:06.818Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-replication/023cc770-6f4e-11e8-8828-503aca26168d",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-replication/023cc770-6f4e-11e8-8828-503aca26168d"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"ReplicationGroup\": \"us-east-1,eu-west-1,eu-central-1\",\n  \"Table\": { \"Fn::GetParam\": [\"ResourcesOutput\", \"Outputs.json\", \"LocationsTable\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-replication",
+          "TemplatePath": "GitHubOutput::replication.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "ResourcesOutput"
+          }
+        ]
+      },
+      "Recovery": {
+        "actionName": "Recovery",
+        "latestExecution": {
+          "status": "Succeeded",
+          "summary": "Stack StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-recovery was updated with no change.",
+          "lastStatusChange": "2018-07-30T10:27:06.875Z",
+          "externalExecutionId": "stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-recovery/01fdc2a0-6f4e-11e8-aff3-50a686e4bb1e",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?#/stack/detail?stackId=arn:aws:cloudformation:us-east-1:122946922490:stack/StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-recovery/01fdc2a0-6f4e-11e8-aff3-50a686e4bb1e"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/cloudformation/home?/",
+        "actionTypeId": {
+          "category": "Deploy",
+          "owner": "AWS",
+          "provider": "CloudFormation",
+          "version": "1"
+        },
+        "runOrder": 1,
+        "configuration": {
+          "ActionMode": "REPLACE_ON_FAILURE",
+          "Capabilities": "CAPABILITY_IAM",
+          "ParameterOverrides": "{\n  \"Table\": { \"Fn::GetParam\": [\"ResourcesOutput\", \"Outputs.json\", \"LocationsTable\"] }\n}\n",
+          "RoleArn": "arn:aws:iam::122946922490:role/StackSet-locations-e454f750-f97-CloudformationRole-19N3LELN6G4Q6",
+          "StackName": "StackSet-locations-e454f750-f97d-459e-b999-103bc7c7e177-recovery",
+          "TemplatePath": "GitHubOutput::recovery.yml"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "ResourcesOutput"
+          }
+        ]
+      },
+      "Specification": {
+        "actionName": "Specification",
+        "latestExecution": {
+          "status": "Succeeded",
+          "lastStatusChange": "2018-07-30T10:28:13.015Z",
+          "externalExecutionId": "StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudwatch/home#logStream:group=%252Faws%252Flambda%252FStackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/lambda/home#/functions/StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+        "actionTypeId": {
+          "category": "Invoke",
+          "owner": "AWS",
+          "provider": "Lambda",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "FunctionName": "StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+          "UserParameters": "[\n  {\n    \"roleArn\": \"arn:aws:iam::122946922490:role/StackSet-specifications-c72e295-BucketTransferRole-76KHQT3JJNTT\",\n    \"bucket\": \"stackset-specifications-c72e2955-9c3c-4bb8-bucket-1cpzkq07m9q2c\",\n    \"prefix\": \"locations\",\n    \"cwd\": \"specifications/\",\n    \"src\": [\"GitHubOutput::**/*\"]\n  },\n  {\n    \"roleArn\": \"arn:aws:iam::122946922490:role/StackSet-specifications-c72e295-BucketTransferRole-76KHQT3JJNTT\",\n    \"bucket\": \"stackset-specifications-c72e2955-9c3c-4bb8-bucket-1cpzkq07m9q2c\",\n    \"prefix\": \"locations\",\n    \"src\": [\"DomainOutput::Outputs.json\"]\n  }\n]\n"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "GitHubOutput"
+          },
+          {
+            "name": "DomainOutput"
+          }
+        ]
+      },
+      "Documentation": {
+        "actionName": "Documentation",
+        "latestExecution": {
+          "status": "Succeeded",
+          "lastStatusChange": "2018-07-30T10:28:12.985Z",
+          "externalExecutionId": "StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+          "externalExecutionUrl": "https://us-east-1.console.aws.amazon.com/cloudwatch/home#logStream:group=%252Faws%252Flambda%252FStackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E"
+        },
+        "entityUrl": "https://us-east-1.console.aws.amazon.com/lambda/home#/functions/StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+        "actionTypeId": {
+          "category": "Invoke",
+          "owner": "AWS",
+          "provider": "Lambda",
+          "version": "1"
+        },
+        "runOrder": 2,
+        "configuration": {
+          "FunctionName": "StackSet-aws-pipeline-transfer-f3-TransferFunction-F3658JPLB45E",
+          "UserParameters": "[\n  {\n    \"roleArn\": \"arn:aws:iam::122946922490:role/StackSet-documentation-26b5c427-BucketTransferRole-N4AT84B84IKG\",\n    \"bucket\": \"stackset-documentation-26b5c427-060e-4dce-bucket-1tv2maiox9uxg\",\n    \"prefix\": \"api/.raw/locations\",\n    \"src\": [\"BuildOutput::docs.tar\"]\n  }\n]\n"
+        },
+        "outputArtifacts": [],
+        "inputArtifacts": [
+          {
+            "name": "BuildOutput"
+          }
+        ]
+      }
+    }
+  }
+}

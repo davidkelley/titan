@@ -1,0 +1,54 @@
+{
+  "name": "@titan/cli",
+  "description": "Internal CI/CD CLI Tool for Aerofer",
+  "version": "0.0.0",
+  "author": "davidkelley @davidkelley",
+  "bin": {
+    "titan": "./bin/run"
+  },
+  "bugs": "https://github.com/davidkelley/titan/issues",
+  "dependencies": {
+    "@oclif/plugin-help": "^2.0.5",
+    "@oclif/plugin-not-found": "^1.1.4",
+    "@oclif/plugin-plugins": "^1.5.4",
+    "@oclif/plugin-warn-if-update-available": "^1.3.9"
+  },
+  "engines": {
+    "node": ">=8.10"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/davidkelley/aerofer-titan",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "titan",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-warn-if-update-available"
+    ],
+    "hooks": {
+      "init": [
+        "./src/hooks/init/git",
+        "./src/hooks/init/rc"
+      ],
+      "credentials:aws": "./src/hooks/credentials/aws"
+    }
+  },
+  "repository": "davidkelley/titan",
+  "scripts": {
+    "prepack": "oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
