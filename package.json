@@ -31,8 +31,8 @@
     "rxjs": "^6.2.2"
   },
   "devDependencies": {
-    "@aerofer/eslint-config": "0.0.23",
-    "@aerofer/prettier-style": "0.0.23",
+    "@aerofer/eslint-config": "0.0.27",
+    "@aerofer/prettier-style": "0.0.27",
     "@oclif/dev-cli": "^1.15.4",
     "@oclif/plugin-help": "^2.0.5",
     "@oclif/test": "^1.1.0",
