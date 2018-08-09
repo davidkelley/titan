@@ -39,6 +39,10 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 
+      - run:
+          name: Publish Coverage
+          command: npx codecov
+
       - store_test_results:
           path: reports
 
