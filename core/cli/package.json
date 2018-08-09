@@ -1,6 +1,6 @@
 {
   "name": "@titan/cli",
-  "description": "Internal CI/CD CLI Tool for Aerofer",
+  "description": "CI/CD CLI Tool for AWS",
   "version": "0.0.0",
   "author": "davidkelley @davidkelley",
   "bin": {
@@ -22,7 +22,7 @@
     "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/davidkelley/aerofer-titan",
+  "homepage": "https://github.com/davidkelley/titan",
   "keywords": [
     "oclif"
   ],

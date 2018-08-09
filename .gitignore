@@ -1,4 +1,5 @@
 .eslintcache
 lerna-*
+coverage
 node_modules
 tmp
