@@ -1,11 +1,13 @@
 version: 2
 
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8
+
 jobs:
   build:
-    docker:
-      - image: node:8
-    working_directory: ~/repo
-
+    <<: *defaults
     steps:
       - checkout
       - run: npm i -g npm
@@ -16,7 +18,7 @@ jobs:
           - v1-dependencies-
 
       - run: npm ci
-      
+
       - run: npm run lerna bootstrap
 
       - run: npm test
@@ -25,3 +27,20 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+workflows:
+  version: 2
+  publish:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
