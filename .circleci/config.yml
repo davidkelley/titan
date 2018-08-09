@@ -15,7 +15,7 @@ jobs:
 
       - restore_cache:
           keys:
-          - deps-{{ checksum "package-lock.json" }}
+          - deps-{{ checksum "package.json" }}
           - deps-
 
       - run:
@@ -25,11 +25,15 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: deps-{{ checksum "package-lock.json" }}
+          key: deps-{{ checksum "package.json" }}
 
-      - run: npm run lerna bootstrap
+      - run:
+          name: Bootstrap Lerna Dependencies
+          command: npm run lerna bootstrap
 
-      - run: npm test
+      - run:
+          name: Test Packages
+          command: npm test
 
       - persist_to_workspace:
           root: ~/repo
@@ -42,7 +46,9 @@ jobs:
       - attach_workspace:
           at: ./
 
-      - run: npm run lerna publish -- --yes --conventional-commits
+      - run:
+          name: Publish Packages
+          command: npm run lerna publish -- --yes --conventional-commits
 
 workflows:
   version: 2
