@@ -11,7 +11,8 @@
     "@oclif/plugin-help": "^2.0.5",
     "@oclif/plugin-not-found": "^1.1.4",
     "@oclif/plugin-plugins": "^1.5.4",
-    "@oclif/plugin-warn-if-update-available": "^1.3.9"
+    "@oclif/plugin-warn-if-update-available": "^1.3.9",
+    "snyk": "^1.316.1"
   },
   "engines": {
     "node": ">=8.10"
@@ -49,6 +50,9 @@
   "scripts": {
     "prepack": "oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
     "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
-    "version": "oclif-dev readme && git add README.md"
-  }
+    "version": "oclif-dev readme && git add README.md",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
