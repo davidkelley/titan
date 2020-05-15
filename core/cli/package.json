@@ -9,7 +9,7 @@
   "bugs": "https://github.com/davidkelley/titan/issues",
   "dependencies": {
     "@oclif/plugin-help": "^2.0.5",
-    "@oclif/plugin-not-found": "^1.1.4",
+    "@oclif/plugin-not-found": "^1.2.4",
     "@oclif/plugin-plugins": "^1.5.4",
     "@oclif/plugin-warn-if-update-available": "^1.3.9"
   },
