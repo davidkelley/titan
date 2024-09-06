@@ -8,10 +8,10 @@
   },
   "bugs": "https://github.com/davidkelley/titan/issues",
   "dependencies": {
-    "@oclif/plugin-help": "^2.0.5",
-    "@oclif/plugin-not-found": "^1.1.4",
-    "@oclif/plugin-plugins": "^1.5.4",
-    "@oclif/plugin-warn-if-update-available": "^1.3.9"
+    "@oclif/plugin-help": "^4.0.0",
+    "@oclif/plugin-not-found": "^1.2.5",
+    "@oclif/plugin-plugins": "^2.0.12",
+    "@oclif/plugin-warn-if-update-available": "^2.0.39"
   },
   "engines": {
     "node": ">=8.10"
